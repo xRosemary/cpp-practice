@@ -1,4 +1,5 @@
 #include "Array.h"
+#include "List.h"
 #include <iostream>
 
 class A
@@ -47,7 +48,26 @@ void ArrayTest()
 	ArrayNormalTest();
 }
 
+
+void ListTest()
+{
+	TDoubleLinkedList<int> list1;
+	auto node1 = list1.AddTail(1);
+	auto node2 = list1.AddTail(2);
+	auto node3 = list1.InsertNode(3, node2);
+	auto ret   = list1.FindNode(2);
+	list1.RemoveNode(node2, true);
+
+	for (auto It = TDoubleLinkedList<int>::TConstIterator(list1.GetHead()); It; It++)
+	{
+		std::cout << *It << std::endl;
+	}
+
+	list1.Empty();
+}
+
 int main()
 {
 	ArrayTest();
+	ListTest();
 }
