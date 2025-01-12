@@ -326,3 +326,10 @@ SizeType DefaultCalculateSlackReserve(SizeType NumElements, std::size_t BytesPer
 {
 	return NumElements;
 }
+
+template <typename T>
+typename std::remove_reference<T>::type&& MoveTempIfPossible(T&& Obj)
+{
+	typedef typename std::remove_reference<T>::type CastType;
+	return (CastType&&)Obj;
+}

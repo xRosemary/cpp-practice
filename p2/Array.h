@@ -75,13 +75,6 @@ private:
 		}
 	}
 
-    template <typename T>
-    typename std::remove_reference<T>::type&& MoveTempIfPossible(T&& Obj)
-    {
-        typedef typename std::remove_reference<T>::type CastType;
-        return (CastType&&)Obj;
-    }
-
 public:
 
 	ElementType* GetData()
